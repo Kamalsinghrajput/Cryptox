@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap");
+
+:root {
+  --clr-primary: #000000;
+  --clr-secondary: #f8f8f8;
+  --clr-text-2: #000000;
+  --clr-white: #fff;
+}
+body {
+  overflow-x: hidden;
+
+  color: var(--clr-black);
+  background-color: var(--clr-primary);
+  font-family: "Poppins", sans-serif;
+  background: rgb(238, 174, 202);
+  background: linear-gradient(
+    90deg,
+    rgba(238, 174, 202, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
+  );
+}
