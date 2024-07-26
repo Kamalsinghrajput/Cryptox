@@ -2,13 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import Dashboard from "./components/CryptoDetails/dashboard.jsx";
 import Crypto from "./components/Crypto/crypto.jsx";
 import Exchanges from "./components/exchanges.jsx";
 import News from "./components/news.jsx";
 import About from "./components/about.jsx";
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <App />,
