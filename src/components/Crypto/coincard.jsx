@@ -6,18 +6,22 @@ function Coincard() {
   const [cryptoDetails, setCryptoDetails] = useState();
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage, setPostPerPage] = useState(12);
+  const [page, setPage] = useState(1);
 
   const lastPostIndex = currentPage * postPerPage;
   const firstPostIndex = lastPostIndex - postPerPage;
 
-  const currentPosts = cryptoDetails.slice(firstPostIndex, lastPostIndex);
+  // const currentPosts = cryptoDetails.slice(firstPostIndex, lastPostIndex);
   const getData = async () => {
     try {
-      const response = await fetch(URL, {
-        headers: {
-          Authorization: `Bearer ${apiKey}`,
-        },
-      });
+      const response = await fetch(
+        `https://api.coinranking.com/v2/coins?limit=10&offset=${page - 1 * 10}`,
+        {
+          headers: {
+            Authorization: `Bearer ${apiKey}`,
+          },
+        }
+      );
       const json = await response.json();
       console.log(json);
       setCryptoDetails(json.data.coins);
@@ -27,7 +31,12 @@ function Coincard() {
   };
   useEffect(() => {
     getData();
-  }, []);
+  }, [page]);
+
+  function changePage(e) {
+    const value = e.target.innerText;
+    setPage(value);
+  }
 
   return (
     <>
@@ -51,6 +60,15 @@ function Coincard() {
           </div>
         </div>
       </div> */}
+      {/* /////// */}
+      {/* /////// */}
+      {/* /////// */}
+      {/* /////// */}
+      {/*  why use ul if you're not using li inside ul */}
+      {/* /////// */}
+      {/* /////// */}
+      {/* /////// */}
+      {/* /////// */}
       <ul className="   flex flex-col gap-0.5 ">
         <div className="flex w-[83vw] justify-around text-white py-2 bg-[#1B1E2D] rounded-md  ">
           {["Symbol", "Coin Name", "Price", "24h Volume", "Market Cap"].map(
@@ -84,6 +102,17 @@ function Coincard() {
           );
         })}
       </ul>
+      <div className=" bottom-0 left-0 w-[100px]">
+        <div className="cursor-pointer bg-white mb-4" onClick={changePage}>
+          1
+        </div>
+        <div className="cursor-pointer bg-white mb-4" onClick={changePage}>
+          2
+        </div>
+        <div className="cursor-pointer bg-white mb-4" onClick={changePage}>
+          3
+        </div>
+      </div>
     </>
   );
 }
